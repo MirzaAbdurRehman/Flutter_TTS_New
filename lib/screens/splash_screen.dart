@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import 'Home/home.dart';
+import 'bottom_navigation_bar/bottom_navigation_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(
         Duration(seconds: 6), () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BottomNavigationBarScreen()));
     }
     );
     // TODO: implement initState
