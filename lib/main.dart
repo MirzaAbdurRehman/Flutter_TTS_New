@@ -1,4 +1,5 @@
 import 'package:first_app/screens/Home/home.dart';
+import 'package:first_app/screens/TabBar/tab_bar.dart';
 import 'package:first_app/screens/auth/sign_up_screen.dart';
 import 'package:first_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
