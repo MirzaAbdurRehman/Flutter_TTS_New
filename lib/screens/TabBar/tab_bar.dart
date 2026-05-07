@@ -15,7 +15,10 @@ class _TabBarScreensState extends State<TabBarScreens> {
       child: Scaffold(
         backgroundColor: Colors.blue.shade300,
         appBar: AppBar(
-          title: Text('My Tabs',style: TextStyle(color: Colors.white),),
+          title: Text('My Tabs',style: TextStyle(
+              fontFamily: 'PinyonScript',
+              color: Colors.white
+          ),),
           backgroundColor: Colors.black,
           centerTitle: true,
           bottom: PreferredSize(
@@ -76,7 +79,9 @@ class TabContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(title,style: TextStyle(
+      child: Text(
+        title,style: TextStyle(
+        fontFamily: 'RubikDirt',
           color: Colors.white,
           fontSize: 24,
           fontWeight: FontWeight.w700

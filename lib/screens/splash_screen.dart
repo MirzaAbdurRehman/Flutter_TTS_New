@@ -1,8 +1,8 @@
+import 'package:first_app/screens/Home/video_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import 'Home/home.dart';
-import 'bottom_navigation_bar/bottom_navigation_bar.dart';
+import '../api_screens/user_fetch_api.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(
         Duration(seconds: 6), () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserData()));
     }
     );
     // TODO: implement initState
