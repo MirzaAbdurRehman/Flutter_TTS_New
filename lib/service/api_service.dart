@@ -39,4 +39,22 @@ class ApiService{
       throw Exception('Failed to fetch data: $error');
     }
   }
+
+
+  Future<CustomerModel> fetchUserDetails(String id) async {
+    try{
+      final response = await http.get(Uri.parse('$baseUrl/users/$id'));
+      if(response.statusCode == 200){
+        final Map<String, dynamic> jsonMap = json.decode(response.body);
+        return CustomerModel.fromJson(jsonMap);
+      }
+      else{
+        throw Exception('Failed to load data: ${response.statusCode}');
+      }
+    }catch(error){
+      throw Exception('Failed to fetch data: $error');
+    }
+  }
+
+
 }

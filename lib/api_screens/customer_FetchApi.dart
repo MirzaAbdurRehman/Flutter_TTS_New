@@ -1,4 +1,5 @@
 import 'package:first_app/Model/customer_model.dart';
+import 'package:first_app/api_screens/user_detail_screen.dart';
 import 'package:flutter/material.dart';
 import '../service/api_service.dart';
 
@@ -139,107 +140,112 @@ class _CustomerDataState extends State<CustomerData> with TickerProviderStateMix
           ),
         );
       },
-      child: Card(
-        margin: const EdgeInsets.only(bottom: 12),
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => UserDetailScreen(userId: customer.id.toString())));
+        },
+        child: Card(
+          margin: const EdgeInsets.only(bottom: 12),
+          elevation: 2,
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.white,
-                Color(0xFFF8FAFC),
-              ],
-            ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header with username
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 24,
-                      backgroundColor: const Color(0xFF6366F1),
-                      child: Text(
-                        avatarLetter,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.white,
+                  Color(0xFFF8FAFC),
+                ],
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header with username
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 24,
+                        backgroundColor: const Color(0xFF6366F1),
+                        child: Text(
+                          avatarLetter,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            customer.username ?? 'N/A',
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFF1E293B),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              customer.username ?? 'N/A',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF1E293B),
+                              ),
                             ),
-                          ),
-                          Text(
-                            customer.company?.name ?? 'N/A',
-                            style: const TextStyle(
-                              fontSize: 13,
-                              color: Color(0xFF64748B),
+                            Text(
+                              customer.company?.name ?? 'N/A',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                color: Color(0xFF64748B),
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-                // Contact Info
-                _buildInfoRow(
-                  Icons.email_outlined,
-                  'Email',
-                  customer.email ?? 'N/A',
-                ),
-                const SizedBox(height: 12),
-                _buildInfoRow(
-                  Icons.phone_outlined,
-                  'Phone',
-                  customer.phone ?? 'N/A',
-                ),
-                const SizedBox(height: 12),
-                // Location/City
-                _buildInfoRow(
-                  Icons.location_on_outlined,
-                  'City',
-                  customer.address?.city ?? 'N/A',
-                ),
-                const SizedBox(height: 12),
-                // Website
-                _buildInfoRow(
-                  Icons.language,
-                  'Website',
-                  customer.website ?? 'N/A',
-                ),
-                if (customer.address?.geo?.lat != null) ...[
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  // Contact Info
+                  _buildInfoRow(
+                    Icons.email_outlined,
+                    'Email',
+                    customer.email ?? 'N/A',
+                  ),
                   const SizedBox(height: 12),
                   _buildInfoRow(
-                    Icons.map_outlined,
-                    'Location',
-                    'Lat: ${customer.address!.geo!.lat}',
+                    Icons.phone_outlined,
+                    'Phone',
+                    customer.phone ?? 'N/A',
                   ),
+                  const SizedBox(height: 12),
+                  // Location/City
+                  _buildInfoRow(
+                    Icons.location_on_outlined,
+                    'City',
+                    customer.address?.city ?? 'N/A',
+                  ),
+                  const SizedBox(height: 12),
+                  // Website
+                  _buildInfoRow(
+                    Icons.language,
+                    'Website',
+                    customer.website ?? 'N/A',
+                  ),
+                  if (customer.address?.geo?.lat != null) ...[
+                    const SizedBox(height: 12),
+                    _buildInfoRow(
+                      Icons.map_outlined,
+                      'Location',
+                      'Lat: ${customer.address!.geo!.lat}',
+                    ),
+                  ],
                 ],
-              ],
+              ),
             ),
           ),
         ),
