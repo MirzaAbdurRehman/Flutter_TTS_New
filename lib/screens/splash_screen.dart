@@ -1,6 +1,9 @@
 import 'package:first_app/api_screens/customer_FetchApi.dart';
+import 'package:first_app/screens/image_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+import 'custom_scrollbar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(
         Duration(seconds: 6), () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerData()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ImagePickerScreen()));
     }
     );
     // TODO: implement initState
